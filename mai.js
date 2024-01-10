@@ -1,137 +1,141 @@
-
-
-let usuario;
-let pregunta1;
-let pregunta2;
-let pregunta3;
-let pregunta4;
-let pregunta5;
-let pregunta6;
+let pregunta1 = null;
+let pregunta2 = null;
+let pregunta3 = null;
+let pregunta4 = null;
+let pregunta5 = null;
 let contador = 0;
-let mensaje;
-let porcent = 0;
-let jugadores = 0;
-let participantes = 0;
-let indice = 0;
-let salir = 0;
-const resultado = [];
-const resultado2 = [];
+const jugadores = [];
+const puntaje = [];
+let nombre = null;
+let gr1 = document.getElementById("gr");
+let formulario1 = document.getElementById("formulario");
+
+
+
+
 
 function error(p) {
-    alert("Respuesta " + p + " mmmmmm tengo mis dudas");
     contador++;
 }
 
-jugadores = prompt("Cuantos participantes van a jugar?");
+function inicio() {
+    pregunta1 = document.getElementById("pregunta1").value;
+    pregunta2 = document.getElementById("pregunta2").value;
+    pregunta3 = document.getElementById("pregunta3").value;
+    pregunta4 = document.getElementById("pregunta4").value;
+    pregunta5 = document.getElementById("pregunta5").value;
+    nombre = document.getElementById("nombre").value;
 
-if (isNaN(jugadores)) {
-    alert("Solo puede ingresar numeros");
-    jugadores = prompt("Cuantos participantes van a jugar?");
-}
 
 
-while (participantes < jugadores) {
+    if (nombre === '' || pregunta1 === '' || pregunta2 === '' || pregunta3 === '' || pregunta4 === '' || pregunta5 === '') {
 
-    usuario = prompt("Indicame tu Nombre:");
-    alert("Hola " + usuario + " Vamos a hacerte un pequeño test para saber si podes manejar, estas listo ? Comencemos!!!!!!!");
-
-    pregunta1 = Number(prompt("cual es la edad minima para poder manejar: "));
-
-    if (pregunta1 == 18) {
-        alert("Respuesta " + pregunta1 + " es correcta");
+        gr1.innerHTML = '<h2>' + "Falta completar algun dato" + '</h2>';
     }
 
-    else if (isNaN(pregunta1)) {
-        alert("Error por no usar numeros, deberas voler a empesar");
-        error(pregunta1);
-        salir = 1;
-        break
-    }
     else {
-        error(pregunta1);
-    }
-    pregunta2 = Number(prompt("cuantas ruedas tiene un auto sin contar la de auxilio: "));
+        if (pregunta1 == 18) {
 
-    if (pregunta2 == 4) {
-        alert("Respuesta " + pregunta2 + " es correcta");
-    }
+        }
 
-    else if (isNaN(pregunta2)) {
-        alert("Error por no usar numeros, deberas voler a empesar");
-        error(pregunta2);
-        salir = 1;
-        break
-    }
-    else {
-        error(pregunta2);
-    }
+        else if (isNaN(pregunta1)) {
+            error(pregunta1);
 
-    pregunta3 = prompt("como se escribe rojo en ingles: ");
+        }
+        else {
+            error(pregunta1);
+        }
 
-    if (pregunta3.toUpperCase() == "RED") {
-        alert("Respuesta " + pregunta3 + " es correcta");
-    }
-    else {
-        error(pregunta3);
-    }
 
-    pregunta4 = Number(prompt("cual es la Raiz cuadrada de 9"));
+        if (pregunta2 == 4) {
 
-    if (pregunta4 == 3) {
-        alert("Respuesta " + pregunta4 + " es correcta");
-    }
+        }
 
-    else if (isNaN(pregunta4)) {
-        alert("Error por no usar numeros, deberas voler a empesar");
-        error(pregunta4);
-        salir = 1;
-        break
-    }
-    else {
-        error(pregunta4);
-    }
-    pregunta5 = prompt("ahora la ultima pregunta, estas listo? ..Recordame tu nombre");
+        else if (isNaN(pregunta2)) {
 
-    if (pregunta5.toUpperCase() == usuario.toUpperCase()) {
-        alert("Respuesta " + pregunta5 + " es correcta");
-    }
-    else {
-        error(pregunta5);
-    }
+            error(pregunta2);
+
+        }
+        else {
+            error(pregunta2);
+        }
 
 
 
-    if (contador > 0 && contador <= 2) { alert("Uh le pifiaste a " + contador + " preguntas, Declarado copiloto") }
-    else if (contador >= 3) { alert("Uh le pifiaste a " + contador + " preguntas, Te tomaste todo amigo!!Ahora tomate un uber") }
-    else { alert("Ningun error, Que grande Toretto, a casa") }
+        if (pregunta3.toUpperCase() == "RED") {
+
+        }
+        else {
+            error(pregunta3);
+        }
 
 
-    pregunta6 = prompt("Queres saber tu porcentage de borracho? decime que si");
 
-    if (pregunta6.toUpperCase() == "SI") {
+        if (pregunta4 == 3) {
+
+        }
+
+        else if (isNaN(pregunta4)) {
+
+            error(pregunta4);
+
+
+        }
+        else {
+            error(pregunta4);
+        }
+
+
+        if (pregunta5.toUpperCase() == nombre.toUpperCase()) {
+
+        }
+        else {
+            error(pregunta5);
+        }
+
+
         porcent = contador * 100 / 5;
-
-        alert("Tu porcentage del alcohol es: " + porcent + "%");
         contador = 0;
 
+        jugadores.push(nombre);
+        puntaje.push(porcent);
+
+        gr1.innerHTML = '<h2>' + "Jugador " + nombre + " Grabado y escrachado!!!!" + '</h2>';
+
     }
-    else {
-        contador = 0;
+}
+
+
+function resultado() {
+
+    for (i = 0; i < jugadores.length; i++) {
+        const set = 0;
+        const enJSON = JSON.stringify(jugadores[i]) + " % de ebriedad  : " + JSON.stringify(puntaje[i])
+        console.log(enJSON);
+        gr1.innerHTML = '<h2>' + enJSON + '</h2>';
+
+
+
     }
 
-    participantes++;
 
-    resultado.push(usuario);
-    resultado2.push(porcent);
+
 
 }
 
-if (salir = 0) {
-    for (let index = 0; index < jugadores; index++) {
+function limpiar() {
 
-        alert(resultado[index] + " " + resultado2[index] + "%");
-    }
+    document.getElementById("pregunta1").value = "";
+    document.getElementById("pregunta2").value = "";
+    document.getElementById("pregunta3").value = "";
+    document.getElementById("pregunta4").value = "";
+    document.getElementById("pregunta5").value = "";
+    document.getElementById("nombre").value = "";
 
-    indice = resultado2.indexOf(Math.min(...resultado2));
-    alert("El que tomo menos y contesto mas rapido es : " + resultado[indice] + " con el " + Math.min(...resultado2) + " % Felicitaciones Schumacher ");
 }
+
+function juego() {
+    formulario1.innerHTML = '<form action="/mai.js" method="post"><ul><li> <label for="nombre">decime tu nombre?</label><input type="text" id="nombre" name="user_name" /></li><li><label for="pregunta1">cual es la edad minima para poder manejar?:</label><input type="text" id="pregunta1" name="pregunta1" /></li><li><label for="pregunta2">cuantas ruedas tiene un auto sin contar la de auxilio?:</label><input type="text" id="pregunta2" name="pregunta2" /></li><li><label for="pregunta3">como se escribe rojo en ingles?</label><input type="text" id="pregunta3" name="pregunta3" /></li><li><label for="pregunta4">cual es la Raiz cuadrada de 9?</label><input type="text" id="pregunta4" name="pregunta4" /></li><li><label for="pregunta5">ahora la ultima pregunta, estas listo? ..Recordame tu nombre?</label><input type="text" id="pregunta5" name="pregunta5" /></li></ul></form>';
+}
+
+

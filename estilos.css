@@ -20,3 +20,14 @@ body {
     color: orange;
     text-shadow: 1px 1px 2px violet;
   }
+
+  p {
+    color: whitesmoke;
+  }
+  div {
+    color: whitesmoke;
+  }
+
+  input{
+    border-radius: 25px;
+  }
