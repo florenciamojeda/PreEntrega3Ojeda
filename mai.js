@@ -9,6 +9,7 @@ const puntaje = [];
 let nombre = null;
 let gr1 = document.getElementById("gr");
 let formulario1 = document.getElementById("formulario");
+let lista = document.getElementById("lista");
 
 
 
@@ -107,14 +108,21 @@ function inicio() {
 
 
 function resultado() {
-
+   
     for (i = 0; i < jugadores.length; i++) {
         const set = 0;
-        const enJSON = JSON.stringify(jugadores[i]) + " % de ebriedad  : " + JSON.stringify(puntaje[i])
-        console.log(enJSON);
-        gr1.innerHTML = '<h2>' + enJSON + '</h2>';
+        const enJSON = JSON.stringify(jugadores[i]) + " % de ebriedad  : " + JSON.stringify(puntaje[i]);
+        
+        localStorage.setItem("jugador"+[i],enJSON);
 
 
+        Swal.fire({
+            title: "Resultado!!!!!",
+            text:  enJSON,
+            icon: "info"
+          });
+
+        
 
     }
 
@@ -139,3 +147,40 @@ function juego() {
 }
 
 
+function mjugadores(){
+    fetch(enJSON)
+    .then (respuesta => respuesta.json ())
+    .then (respuesta => console.log (respuesta))
+}
+
+
+function traigoLista(){
+
+    fetch('lista.json')
+    .then((response) =>  response.json())
+    .then(data => {
+
+        var tabla = document.createElement('table');
+        
+        // por cada dato se crea una fila
+        for (const fila of data){
+            let tr = document.createElement('tr');
+        
+            // otro bucle para recorrer los datos de cada objeto
+            for (const atributo of Object.values(fila)) {
+        
+                var celda = document.createElement('td');
+                celda.textContent = atributo;
+                celda.style.border = '1px solid';
+                tr.appendChild(celda);
+            }
+        
+            tr.appendChild(celda);
+        
+            tabla.appendChild(tr);
+        }
+        document.body.appendChild(tabla);
+        })
+
+        lista.disabled = true; 
+}

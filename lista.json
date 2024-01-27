@@ -1,0 +1,59 @@
+[
+
+{
+    "id": 1,
+    "nombre": "Cerveza",
+    "alcohol": "%4"
+    
+    
+    },
+{
+    "id": 2,
+    "nombre": "Fernet",
+    "alcohol": "%10"
+}
+,
+{
+    "id": 3,
+    "nombre": "Speed con Vodka",
+    "alcohol": "%9"
+},
+{
+    "id": 4,
+    "nombre": "Vino tinto",
+    "alcohol": "%7"
+},
+{
+    "id": 5,
+    "nombre": "vino Blanco",
+    "alcohol": "%4"
+},
+{
+    "id": 6,
+    "nombre": "Daikiri",
+    "alcohol": "%3"
+},
+{
+    "id": 7,
+    "nombre": "Gin Tonic",
+    "alcohol": "%6"
+},
+{
+    "id": 8,
+    "nombre": "Mojito",
+    "alcohol": "%3"
+}
+,
+{
+    "id": 9,
+    "nombre": "Champagne",
+    "alcohol": "%10"
+}
+,
+{
+    "id": 10,
+    "nombre": "Wisky",
+    "alcohol": "%11"
+}
+
+]
